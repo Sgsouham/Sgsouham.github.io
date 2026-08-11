@@ -266,6 +266,21 @@ export const skillClusters: SkillCluster[] = [
 
 export const languages = ["Python", "PyTorch", "TensorFlow", "C++", "Git / CI", "Vue.js", "Java"];
 
+export const marqueeKeywords = [
+  "Quantization",
+  "Triton",
+  "GRPO",
+  "On-device AI",
+  "CUDA",
+  "ONNX Export",
+  "DPO",
+  "PTQ / QAT",
+  "BEV Perception",
+  "RL Post-training",
+  "NPU Enablement",
+  "Roofline Analysis",
+];
+
 // ─── Publications ─────────────────────────────────────────────
 
 export type Publication = {

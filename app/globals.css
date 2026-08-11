@@ -106,7 +106,8 @@ html.custom-cursor-active * {
   .animate-fade-up-4,
   .animate-fade-up-5,
   .animate-float-slow,
-  .animate-spin-slow {
+  .animate-spin-slow,
+  .marquee-track {
     animation: none;
   }
   .cursor-blink {
@@ -139,6 +140,29 @@ html.custom-cursor-active * {
 .animate-fade-up-3 { animation-delay: 0.36s; }
 .animate-fade-up-4 { animation-delay: 0.48s; }
 .animate-fade-up-5 { animation-delay: 0.6s; }
+
+/* Marquee ticker — seamless infinite scroll (two tracks = -50% loop) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 36s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
 
 /* Floating monogram orbit */
 @keyframes float-slow {
