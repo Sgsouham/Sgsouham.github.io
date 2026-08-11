@@ -54,11 +54,6 @@ export default function Publications() {
                 </div>
                 <p className="mt-3 text-sm font-medium text-stone">{education.degree}</p>
                 <p className="mt-1 text-sm text-dim">{education.location}</p>
-                <div className="mt-5 flex items-center gap-2 rounded-lg border border-line bg-ink/50 px-4 py-3">
-                  <span className="font-mono text-xs text-gold">GPA</span>
-                  <span className="font-serif text-lg font-semibold text-ivory">{education.note.split(": ")[1]}</span>
-                  <span className="ml-auto text-xs text-dim">out of 10.00</span>
-                </div>
               </article>
             </Reveal>
           </div>

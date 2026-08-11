@@ -24,13 +24,13 @@ export const heroTerminalLines = [
   "AI Engineering Lead · 5+ yrs shipping production ML",
   "souham@lead:~$ cat specialization.txt",
   "quantization · custom Triton/CUDA kernels · LLM post-training",
-  "souham@lead:~$ ./enable --models 200+ --on-device ✓",
-  "16× latency reduction · 200+ on-device deployments enabled",
+  "souham@lead:~$ ./enable --models 20+ --on-device ✓",
+  "16× latency reduction · 20+ on-device deployments enabled",
 ];
 
 export const metrics = [
   { value: "5+", label: "Years shipping production ML" },
-  { value: "200+", label: "CV & VLA models enabled on-device" },
+  { value: "20+", label: "Modern CV/NLP/LLM models" },
   { value: "16×", label: "BEVFormer inference latency reduction" },
   { value: "10", label: "Engineers led across dev & delivery" },
 ];
@@ -64,9 +64,9 @@ export const experience: Role[] = [
     location: "Chennai",
     companyNote: "Growth within one company: SWE → Senior SWE → Lead Associate",
     bullets: [
-      "Project Lead — On-device Model Enablement Platform (Oct 2024 – Present): lead a 10-person engineering team delivering an on-device AI platform enabling 200+ CV and VLA models through export, compile, profile, and quantize pipelines — 12 enablement reports shipped to production.",
+      "Project Lead — On-device Model Enablement Platform (Oct 2024 – Present): lead a 10-person engineering team delivering an on-device AI platform enabling 20+ CV/NLP/LLM models through export, compile, profile, and quantize pipelines — 12 enablement reports shipped to production.",
       "Established code-review standards and an Agile delivery cadence that kept every committed milestone on schedule; mentored engineers on quantization workflows and ONNX export constraints.",
-      "Drive framework-level optimization across 200+ models — ONNX export graph constraints, static-vs-dynamic op handling, FP16/INT8 quantization schedules — with on-device latency and accuracy held within customer targets.",
+      "Drive framework-level optimization across 20+ models — ONNX export graph constraints, static-vs-dynamic op handling, FP16/INT8 quantization schedules — with on-device latency and accuracy held within customer targets.",
       "Senior Software Engineer — BEV/GKT Perception Flagship (May 2023 – Oct 2024): owned end-to-end performance for a production multi-camera BEV perception stack (BEVFormer-class).",
       "Rebuilt multi-scale deformable attention and spatial-temporal query grid sampling from scratch as custom PyTorch operators with full ONNX exportability — 800 ms → 50 ms end-to-end (16×) at preserved accuracy via graph-level rewrites, operator fusion, and memory-layout tuning.",
       "Cut latency of a grid-sampling transformer (GKT) for BEV perception from 1.4 s to 59 ms at preserved accuracy.",
@@ -74,7 +74,7 @@ export const experience: Role[] = [
     ],
     highlights: [
       { value: "16×", label: "BEVFormer latency cut" },
-      { value: "200+", label: "models enabled on-device" },
+      { value: "20+", label: "models enabled on-device" },
       { value: "10", label: "person team led" },
       { value: "12", label: "enablement reports shipped" },
     ],
@@ -297,5 +297,4 @@ export const education = {
   degree: "Bachelor of Technology in Information Technology",
   period: "2016 – 2020",
   location: "Kolkata, West Bengal",
-  note: "GPA: 7.67 / 10.00",
 };
