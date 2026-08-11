@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0f;
+  --color-ink-2: #101018;
+  --color-ink-3: #17171f;
+  --color-line: rgba(255, 255, 255, 0.07);
+  --color-ivory: #ece9e2;
+  --color-stone: #a09e97;
+  --color-dim: #8f8d86;
+  --color-gold: #d4af7a;
+  --color-gold-bright: #e8c99a;
+  --color-gold-deep: #a9845a;
+
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(212, 175, 122, 0.25);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: #26262f;
+  border-radius: 8px;
+  border: 2px solid var(--color-ink);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a45;
+}
+
+/* Subtle background grid + glow */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 100%);
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse 55% 45% at 50% 8%, rgba(212, 175, 122, 0.12), transparent 70%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(120deg, #e8c99a 0%, #d4af7a 45%, #b08a55 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Reveal-on-scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-fade-up,
+  .animate-fade-up-1,
+  .animate-fade-up-2,
+  .animate-fade-up-3,
+  .animate-fade-up-4,
+  .animate-fade-up-5,
+  .animate-float-slow,
+  .animate-spin-slow {
+    animation: none;
+  }
+  .cursor-blink {
+    animation: none;
+  }
+}
+
+/* Typing cursor for hero terminal line */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1.1s step-end infinite;
+}
+
+/* Fade-in for hero on load */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-up-1 { animation-delay: 0.12s; }
+.animate-fade-up-2 { animation-delay: 0.24s; }
+.animate-fade-up-3 { animation-delay: 0.36s; }
+.animate-fade-up-4 { animation-delay: 0.48s; }
+.animate-fade-up-5 { animation-delay: 0.6s; }
+
+/* Floating monogram orbit */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+/* Decorative ring rotation */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
