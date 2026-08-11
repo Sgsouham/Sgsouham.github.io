@@ -30,6 +30,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Custom cursor: hide native cursor on fine-pointer devices only */
+html.custom-cursor-active,
+html.custom-cursor-active * {
+  cursor: none !important;
+}
+
 ::selection {
   background: rgba(212, 175, 122, 0.25);
   color: #fff;
@@ -104,6 +110,9 @@ body {
     animation: none;
   }
   .cursor-blink {
+    animation: none;
+  }
+  .animate-pulse {
     animation: none;
   }
 }

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/data";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -58,6 +60,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body className="min-h-screen bg-ink text-ivory antialiased">
+        <ScrollProgress />
+        <CustomCursor />
         <a
           href="#top"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border focus:border-gold/50 focus:bg-ink-2 focus:px-4 focus:py-2 focus:text-sm focus:text-gold"
