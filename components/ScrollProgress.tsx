@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ScrollProgress() {
   const barRef = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -17,7 +17,9 @@ export default function ScrollProgress() {
       if (barRef.current) {
         barRef.current.style.transform = `scaleX(${progress})`;
       }
-      setVisible(scrollTop > 8);
+      if (wrapRef.current) {
+        wrapRef.current.style.opacity = scrollTop > 8 ? "1" : "0";
+      }
       raf = 0;
     };
 
@@ -41,10 +43,9 @@ export default function ScrollProgress() {
 
   return (
     <div
+      ref={wrapRef}
       aria-hidden="true"
-      className={`fixed inset-x-0 top-0 z-[60] h-[3px] bg-transparent transition-opacity duration-300 ${
-        visible ? "opacity-100" : "opacity-0"
-      }`}
+      className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-transparent opacity-0 transition-opacity duration-300"
     >
       <div
         ref={barRef}

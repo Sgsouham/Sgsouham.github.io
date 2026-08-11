@@ -59,18 +59,7 @@ export default function ParticleField({ className = "" }: { className?: string }
 
     const LINK_DIST = 130;
 
-    const drawStatic = () => {
-      ctx.clearRect(0, 0, width, height);
-      for (const p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 175, 122, ${p.a})`;
-        ctx.fill();
-      }
-    };
-
-    const step = () => {
-      if (!running || !visible) return;
+    const drawFrame = () => {
       ctx.clearRect(0, 0, width, height);
 
       // update + draw particles
@@ -108,16 +97,36 @@ export default function ParticleField({ className = "" }: { className?: string }
           }
         }
       }
+    };
 
+    // Single animation loop — never schedules itself twice.
+    const step = () => {
+      raf = 0;
+      if (!running || !visible) return; // loop ends; restarted by start() when conditions allow
+      drawFrame();
       raf = requestAnimationFrame(step);
+    };
+
+    const start = () => {
+      if (raf) cancelAnimationFrame(raf); // safety: never two live loops
+      if (reduced) return;
+      if (running && visible) raf = requestAnimationFrame(step);
+    };
+
+    const stop = () => {
+      if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     };
 
     // pause when off-screen
     const observer = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting;
-        if (!running) return;
-        if (visible && !reduced) raf = requestAnimationFrame(step);
+        if (reduced) return;
+        if (visible) start();
+        else stop();
       },
       { threshold: 0 }
     );
@@ -127,24 +136,24 @@ export default function ParticleField({ className = "" }: { className?: string }
     const onVisibility = () => {
       if (document.hidden) {
         running = false;
-        cancelAnimationFrame(raf);
+        stop();
       } else {
         running = true;
-        if (visible && !reduced) raf = requestAnimationFrame(step);
+        start();
       }
     };
     document.addEventListener("visibilitychange", onVisibility);
 
     resize();
     if (reduced) {
-      drawStatic();
+      drawFrame();
     } else {
-      raf = requestAnimationFrame(step);
+      start();
     }
 
     window.addEventListener("resize", resize);
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("resize", resize);

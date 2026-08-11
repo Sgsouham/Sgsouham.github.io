@@ -19,11 +19,20 @@ export default function CustomCursor() {
     const pos = { x: -100, y: -100 };
     const ring = { x: -100, y: -100 };
     let hovering = false;
+    let pressing = false;
     let raf = 0;
 
     const onMove = (e: MouseEvent) => {
       pos.x = e.clientX;
       pos.y = e.clientY;
+    };
+
+    const onDown = () => {
+      pressing = true;
+    };
+
+    const onUp = () => {
+      pressing = false;
     };
 
     const onOver = (e: MouseEvent) => {
@@ -48,9 +57,11 @@ export default function CustomCursor() {
         dotRef.current.style.transform = `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`;
       }
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${ring.x}px, ${ring.y}px) translate(-50%, -50%) scale(${
-          hovering ? 1.7 : 1
-        })`;
+        // clamp to viewport so the ring never gets cut off at the edges
+        const clampedX = Math.min(Math.max(ring.x, 20), window.innerWidth - 20);
+        const clampedY = Math.min(Math.max(ring.y, 20), window.innerHeight - 20);
+        const scale = hovering ? 1.7 : pressing ? 0.8 : 1;
+        ringRef.current.style.transform = `translate(${clampedX}px, ${clampedY}px) translate(-50%, -50%) scale(${scale})`;
         ringRef.current.style.opacity = hovering ? "0.9" : "0.6";
       }
       raf = requestAnimationFrame(loop);
@@ -58,6 +69,8 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseover", onOver, { passive: true });
+    window.addEventListener("mousedown", onDown);
+    window.addEventListener("mouseup", onUp);
     document.documentElement.addEventListener("mouseleave", onLeave);
     raf = requestAnimationFrame(loop);
 
@@ -65,6 +78,8 @@ export default function CustomCursor() {
       document.documentElement.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
+      window.removeEventListener("mousedown", onDown);
+      window.removeEventListener("mouseup", onUp);
       document.documentElement.removeEventListener("mouseleave", onLeave);
       cancelAnimationFrame(raf);
     };
