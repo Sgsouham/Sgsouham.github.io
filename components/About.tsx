@@ -1,5 +1,6 @@
 import { about, profile } from "@/lib/data";
 import Reveal from "@/components/Reveal";
+import CodeEditor from "@/components/CodeEditor";
 
 const principles = [
   {
@@ -29,12 +30,23 @@ export default function About() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 space-y-5">
-          {about.paragraphs.map((p, i) => (
-            <Reveal key={i} delay={i * 80}>
-              <p className="max-w-3xl text-base leading-relaxed text-stone sm:text-lg">{p}</p>
+        <div className="mt-12 grid items-start gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-14">
+          <div className="space-y-5">
+            {about.paragraphs.map((p, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <p className="max-w-3xl text-base leading-relaxed text-stone sm:text-lg">{p}</p>
+              </Reveal>
+            ))}
+            <Reveal delay={260}>
+              <p className="font-mono text-xs text-dim">
+                <span className="text-gold">#</span> the above, in code — open the tabs.
+              </p>
             </Reveal>
-          ))}
+          </div>
+
+          <Reveal delay={120}>
+            <CodeEditor />
+          </Reveal>
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">

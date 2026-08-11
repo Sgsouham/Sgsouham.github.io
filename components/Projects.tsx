@@ -1,5 +1,6 @@
 import { projects, type ProjectStatus } from "@/lib/data";
 import Reveal from "@/components/Reveal";
+import BenchmarkTerminal from "@/components/BenchmarkTerminal";
 
 const statusMeta: Record<ProjectStatus, { label: string; classes: string; dot: string }> = {
   published: {
@@ -32,6 +33,24 @@ export default function Projects() {
             The learning tracks that extend my professional work — kernel engineering,
             LLM post-training, and frontier on-device enablement. Every number is measured.
           </p>
+        </Reveal>
+
+        <Reveal className="mt-16">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="font-mono text-xs tracking-[0.25em] text-gold uppercase">
+                Run the harness
+              </p>
+              <h3 className="mt-2 font-serif text-2xl text-ivory sm:text-3xl">
+                Benchmarks, not claims
+              </h3>
+            </div>
+            <p className="max-w-md text-sm text-stone">
+              Pick a benchmark to replay the real measurements from triton-op-swap —
+              wins, honest losses, and all.
+            </p>
+          </div>
+          <BenchmarkTerminal />
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">

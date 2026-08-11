@@ -141,6 +141,30 @@ html.custom-cursor-active * {
 .animate-fade-up-4 { animation-delay: 0.48s; }
 .animate-fade-up-5 { animation-delay: 0.6s; }
 
+/* Syntax highlighting tokens (Python) */
+.tok-kw {
+  color: #d4af7a;
+}
+.tok-str {
+  color: #9fc08e;
+}
+.tok-num {
+  color: #d7c4a3;
+}
+.tok-com {
+  color: #6b6b63;
+  font-style: italic;
+}
+.tok-fn {
+  color: #9db2d6;
+}
+.tok-op {
+  color: #8f8d86;
+}
+.tok-plain {
+  color: #d8d5cc;
+}
+
 /* Marquee ticker — seamless infinite scroll (two tracks = -50% loop) */
 @keyframes marquee {
   from {
