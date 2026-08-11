@@ -29,7 +29,7 @@ class SouhamGhosh(AIEngineeringLead):
         self.on_device_models = 20
         self.location = "Chennai, India"
         # BEVFormer flagship: 800 ms -> 50 ms end-to-end
-        self.latency_reduction = "16x"
+        self.latency_reduction = "16×"
         self.honest_negative_results = True
 
     def specialize(self) -> list[str]:

@@ -54,18 +54,43 @@ function tokenizeLine(line: string): ReactNode[] {
       break;
     }
 
-    // string (single or double, incl. f/r prefixes)
+    // triple-quoted string (""" / ''')
+    const tripleMatch = rest.match(/^([fFrRbBuU]{0,2})("""|''')/);
+    if (tripleMatch) {
+      const delim = tripleMatch[2];
+      const start = i + tripleMatch[0].length;
+      const endRel = line.indexOf(delim, start);
+      if (endRel === -1) {
+        // unclosed on this line — highlight to end of line
+        push(line.slice(i), "tok-str", key++);
+        break;
+      }
+      push(line.slice(i, endRel + 3), "tok-str", key++);
+      i = endRel + 3;
+      continue;
+    }
+
+    // string (single or double, incl. f/r prefixes) — respects escaped quotes
     const strMatch = rest.match(/^([fFrRbBuU]{0,2})(["'])/);
     if (strMatch) {
       const quote = strMatch[2];
       const start = i + strMatch[0].length;
-      const endRel = line.indexOf(quote, start);
-      if (endRel === -1) {
+      // scan forward respecting backslash escapes
+      let j = start;
+      while (j < len) {
+        if (line[j] === "\\") {
+          j += 2;
+          continue;
+        }
+        if (line[j] === quote) break;
+        j++;
+      }
+      if (j >= len) {
         push(line.slice(i), "tok-str", key++);
         break;
       }
-      push(line.slice(i, endRel + 1), "tok-str", key++);
-      i = endRel + 1;
+      push(line.slice(i, j + 1), "tok-str", key++);
+      i = j + 1;
       continue;
     }
 

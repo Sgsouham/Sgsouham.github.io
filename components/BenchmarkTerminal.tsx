@@ -16,10 +16,13 @@ export default function BenchmarkTerminal() {
   const [runningId, setRunningId] = useState<string | null>(null);
   const [typed, setTyped] = useState("");
   const bodyRef = useRef<HTMLDivElement | null>(null);
+  const timerRef = useRef<number | null>(null);
 
-  // stop any running animation on unmount
+  // clear any pending timer on unmount
   useEffect(() => {
-    return () => setRunningId(null);
+    return () => {
+      if (timerRef.current !== null) window.clearTimeout(timerRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -28,6 +31,9 @@ export default function BenchmarkTerminal() {
   }, [stages, typed]);
 
   const run = (bench: (typeof benchmarks)[number]) => {
+    // cancel any in-flight animation before starting a new one
+    if (timerRef.current !== null) window.clearTimeout(timerRef.current);
+
     setRunningId(bench.id);
     setStages([]);
     setTyped("");
@@ -41,6 +47,7 @@ export default function BenchmarkTerminal() {
     let charIdx = 0;
 
     const advance = () => {
+      timerRef.current = null;
       if (i >= all.length) {
         setRunningId(null);
         setTyped("");
@@ -55,7 +62,7 @@ export default function BenchmarkTerminal() {
         } else {
           setStages((prev) => [...prev.slice(0, i), { ...stage, text: stage.text.slice(0, charIdx) }]);
         }
-        timer = window.setTimeout(advance, 6);
+        timerRef.current = window.setTimeout(advance, 6);
       } else {
         if (stage.type === "cmd") {
           setStages((prev) => [...prev, { ...stage, text: stage.text }]);
@@ -65,12 +72,11 @@ export default function BenchmarkTerminal() {
         }
         charIdx = 0;
         i++;
-        timer = window.setTimeout(advance, stage.type === "cmd" ? 200 : 60);
+        timerRef.current = window.setTimeout(advance, stage.type === "cmd" ? 200 : 60);
       }
     };
 
-    let timer = window.setTimeout(advance, 250);
-    return () => window.clearTimeout(timer);
+    timerRef.current = window.setTimeout(advance, 250);
   };
 
   return (

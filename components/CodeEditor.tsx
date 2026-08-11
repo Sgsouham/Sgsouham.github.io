@@ -23,10 +23,16 @@ export default function CodeEditor() {
       </div>
 
       {/* File tabs */}
-      <div className="flex items-end gap-0.5 overflow-x-auto border-b border-line bg-ink-2/40 px-2 pt-2">
+      <div
+        role="tablist"
+        aria-label="Code files"
+        className="flex items-end gap-0.5 overflow-x-auto border-b border-line bg-ink-2/40 px-2 pt-2"
+      >
         {editorTabs.map((t, i) => (
           <button
             key={t.file}
+            role="tab"
+            aria-selected={active === i}
             onClick={() => setActive(i)}
             className={`flex shrink-0 items-center gap-1.5 rounded-t-md px-3 py-2 font-mono text-[11px] transition-colors ${
               active === i
@@ -46,7 +52,7 @@ export default function CodeEditor() {
         {/* line numbers */}
         <div
           aria-hidden="true"
-          className="select-none border-r border-line/60 px-3 py-4 text-right font-mono text-[12px] leading-[1.65] text-dim/50"
+          className="select-none border-r border-line/60 px-3 py-4 text-right font-mono text-[12px] leading-[1.7] text-dim/50"
         >
           {Array.from({ length: lineCount }, (_, i) => (
             <div key={i}>{i + 1}</div>
@@ -54,7 +60,7 @@ export default function CodeEditor() {
         </div>
 
         {/* code */}
-        <div className="flex-1 overflow-x-auto p-4 font-mono text-[12px] leading-[1.65] sm:text-[12.5px]">
+        <div role="tabpanel" className="flex-1 overflow-x-auto p-4 font-mono text-[12px] leading-[1.7]">
           <CodeHighlight code={tab.code} />
         </div>
       </div>
