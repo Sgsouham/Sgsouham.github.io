@@ -4,8 +4,8 @@ import CodeEditor from "@/components/CodeEditor";
 
 const principles = [
   {
-    title: "Measured, not marketed",
-    body: "Every claim is a benchmark result — including the losses. Honest negative results are how credibility is built.",
+    title: "Measure before you ship",
+    body: "Optimizations are profiled on the target hardware, and the results — wins and losses — are reported in the write-up.",
   },
   {
     title: "Framework-level first",
@@ -39,7 +39,7 @@ export default function About() {
             ))}
             <Reveal delay={260}>
               <p className="font-mono text-xs text-dim">
-                <span className="text-gold">#</span> the above, in code — open the tabs.
+                <span className="text-gold">#</span> this summary, in code — see the tabs.
               </p>
             </Reveal>
           </div>
@@ -66,7 +66,7 @@ export default function About() {
             <span className="font-mono text-xs tracking-[0.25em] text-dim uppercase">Currently</span>
             <p className="text-sm text-stone sm:text-base">
               Leading the <span className="text-ivory">On-device Model Enablement Platform</span> at Multicoreware Inc. —
-              and building the next generation of post-training &amp; kernel tooling in public.
+              and post-training &amp; kernel tooling in public.
             </p>
             <a
               href={profile.linkedin}

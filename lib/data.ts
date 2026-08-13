@@ -22,25 +22,25 @@ export const profile = {
 export const heroTerminalLines = [
   "souham@lead:~$ whoami",
   "AI Engineering Lead · 5+ yrs shipping production ML",
-  "souham@lead:~$ cat specialization.txt",
-  "quantization · custom Triton/CUDA kernels · LLM post-training",
-  "souham@lead:~$ ./enable --models 20+ --on-device ✓",
-  "16× latency reduction · 20+ on-device deployments enabled",
+  "souham@lead:~$ ls specialization/",
+  "quantization/ triton-kernels/ cuda/ llm-post-training/",
+  "souham@lead:~$ cat metrics.txt",
+  "16× latency reduction · 20+ models enabled on-device",
 ];
 
 export const metrics = [
   { value: "5+", label: "Years shipping production ML" },
-  { value: "20+", label: "Modern CV/NLP/LLM models" },
+  { value: "20+", label: "CV / NLP / LLM models" },
   { value: "16×", label: "BEVFormer inference latency reduction" },
   { value: "10", label: "Engineers led across dev & delivery" },
 ];
 
 export const about = {
-  heading: "Engineer first. Leader by conviction.",
+  heading: "From kernels to teams.",
   paragraphs: [
     "AI engineering lead with 5+ years shipping production model optimization and on-device AI enablement for enterprise customers — quantization tooling (PTQ/QAT), custom Triton/CUDA kernels, and LLM post-training (SFT/DPO/GRPO) on constrained hardware.",
     "I currently lead a 10-person engineering team spanning development and delivery: owning technical roadmaps, code-review standards, mentoring and upskilling, and cross-team coordination with customer engineering organizations.",
-    "My deepest belief: measured, honest systems beat magic. Every number on this page was benchmarked, profiled, and validated — including the places where the honest answer was “this kernel loses to cuBLAS,” because negative results are how credibility is built.",
+    "Before anything ships, it is benchmarked and profiled on the target hardware, and the write-up reports the results as measured — including the places where a custom kernel loses to cuBLAS.",
   ],
 };
 
@@ -130,9 +130,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "triton-op-swap",
-    tagline: "Drop-in Triton operators for a real LLM — with honest numbers",
+    tagline: "Drop-in Triton operators for a real LLM, benchmarked end-to-end",
     description:
-      "Custom Triton kernels (attention, RoPE, RMSNorm, SiLU·up) swapped into Qwen2.5-1.5B through a one-call API — no retraining. 63/63 tests, byte-identical output, and every win or loss measured against PyTorch's native backends. The isolated attention swap loses to cuBLAS FA2; the fused kernels win 1.6–6.7×; the full swap nets +5.4% decode. Reported honestly, never claimed.",
+      "Custom Triton kernels (attention, RoPE, RMSNorm, SiLU·up) swapped into Qwen2.5-1.5B through a one-call API — no retraining. 63/63 tests, byte-identical output, and every win or loss measured against PyTorch's native backends. The isolated attention swap loses to cuBLAS FA2; the fused kernels win 1.6–6.7×; the full swap nets +5.4% decode.",
     status: "published",
     domain: "Kernel Engineering",
     stack: ["OpenAI Triton", "PyTorch", "CUDA", "NCU/NSYS", "roofline analysis"],
@@ -148,16 +148,16 @@ export const projects: Project[] = [
   },
   {
     title: "speculative-decoding",
-    tagline: "A measured walkthrough of why spec decoding loses at small scale",
+    tagline: "Why speculative decoding loses at small scale",
     description:
-      "Vanilla speculative decoding implemented from scratch, verified correct, and benchmarked honestly across 108 configurations and 6 model pairs — it lost every single time (0.22×–0.65×). Three benchmark traps nearly produced a fake win. This is the story of what I built, the traps, and exactly why the trick fails on this class of hardware.",
+      "Vanilla speculative decoding implemented from scratch, verified correct, and benchmarked across 108 configurations and 6 model pairs — it lost every single time (0.22×–0.65×). Three benchmark traps nearly produced a false win. The write-up covers what I built, the traps, and why the technique fails on this class of hardware.",
     status: "published",
     domain: "LLM Inference",
     stack: ["PyTorch", "Transformers", "benchmark harness", "uv"],
     metrics: [
       { value: "108", label: "configurations benchmarked" },
       { value: "21/21", label: "correctness tests" },
-      { value: "0.22–0.65×", label: "honest measured result" },
+      { value: "0.22–0.65×", label: "measured result" },
     ],
     links: [
       { label: "GitHub", href: "https://github.com/Sgsouham/speculative-decoding" },
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     title: "GRPO Reasoning Trainer",
     tagline: "Post-training LLMs with verifiable rewards",
     description:
-      "Custom Group Relative Policy Optimization (GRPO) trainer on Qwen2.5-1.5B with SymPy-verifiable GSM8K rewards (group size G=4), including a DPO baseline for comparison. Tracking reward, response-length, and accuracy curves during training to capture the emergence of self-correction — the LLM 'aha moment'.",
+      "Custom Group Relative Policy Optimization (GRPO) trainer on Qwen2.5-1.5B with SymPy-verifiable GSM8K rewards (group size G=4), including a DPO baseline for comparison. Tracking reward, response-length, and accuracy curves during training to document the emergence of self-correction.",
     status: "in-progress",
     domain: "LLM Post-training",
     stack: ["PyTorch", "Transformers", "SymPy", "GSM8K"],
@@ -192,9 +192,9 @@ export const projects: Project[] = [
   },
   {
     title: "VLA On-Device Enablement",
-    tagline: "Frontier embodied-AI, shipped to edge hardware",
+    tagline: "Vision-language-action models on edge hardware",
     description:
-      "Enabling a Vision-Language-Action model for on-device inference through the full pipeline — export → compile → profile → quantize — with on-device latency and accuracy numbers published in the standard enablement-report format. The frontier-model extension of my on-device AI platform work.",
+      "Enabling a Vision-Language-Action model for on-device inference through the full pipeline — export → compile → profile → quantize — with on-device latency and accuracy numbers published in the standard enablement-report format. An extension of my on-device AI platform work to embodied models.",
     status: "planned",
     domain: "Robotics / Edge AI",
     stack: ["ONNX", "compilation", "quantization", "VLA"],

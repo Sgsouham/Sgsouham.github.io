@@ -30,7 +30,6 @@ class SouhamGhosh(AIEngineeringLead):
         self.location = "Chennai, India"
         # BEVFormer flagship: 800 ms -> 50 ms end-to-end
         self.latency_reduction = "16×"
-        self.honest_negative_results = True
 
     def specialize(self) -> list[str]:
         return [
@@ -46,8 +45,7 @@ class SouhamGhosh(AIEngineeringLead):
   {
     file: "skills.py",
     icon: "⚙️",
-    code: `# skills.py — only defensible skills
-# everything here is used in production or backed by a repo
+    code: `# skills.py — in production use or backed by a repo
 
 skills = {
     "model_optimization": [
@@ -174,8 +172,8 @@ export const benchmarks: Benchmark[] = [
       "  SDPA (cuBLAS FA2)  0.84x",
       "  triton (GQA)       1.00x",
       "",
-      "verdict  honest loss — cuBLAS FA2 wins",
-      "note     negative results are results; the story is the net",
+      "verdict  loss — cuBLAS FA2 wins",
+      "note     cuBLAS FA2 wins on GEMM-capped hardware",
     ],
     verdict: "loss",
   },

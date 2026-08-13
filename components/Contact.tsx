@@ -11,9 +11,7 @@ export default function Contact() {
             07 · Contact
           </p>
           <h2 className="font-serif text-4xl leading-tight text-ivory sm:text-6xl">
-            Let&apos;s build something
-            <br />
-            <span className="text-gradient-gold">efficient together.</span>
+            Get in touch
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-stone sm:text-lg">
             I&apos;m always open to conversations about model optimization, on-device AI,

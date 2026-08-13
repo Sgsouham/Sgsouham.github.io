@@ -10,11 +10,10 @@ export default function Skills() {
             04 · Skills
           </p>
           <h2 className="font-serif text-4xl text-ivory sm:text-5xl">
-            The toolbox, in clusters
+            Technical skills
           </h2>
           <p className="mt-4 max-w-2xl text-stone sm:text-lg">
-            Only defensible skills — everything here is used in production work or backed
-            by a published project.
+            In production use or backed by published projects.
           </p>
         </Reveal>
 

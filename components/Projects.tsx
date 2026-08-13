@@ -28,10 +28,10 @@ export default function Projects() {
           <p className="mb-4 font-mono text-xs tracking-[0.25em] text-gold uppercase">
             03 · Projects
           </p>
-          <h2 className="font-serif text-4xl text-ivory sm:text-5xl">Building in public</h2>
+          <h2 className="font-serif text-4xl text-ivory sm:text-5xl">Selected projects</h2>
           <p className="mt-4 max-w-2xl text-stone sm:text-lg">
-            The learning tracks that extend my professional work — kernel engineering,
-            LLM post-training, and frontier on-device enablement. Every number is measured.
+            Projects that extend my professional work — kernel engineering,
+            LLM post-training, and on-device enablement.
           </p>
         </Reveal>
 
@@ -42,12 +42,12 @@ export default function Projects() {
                 Run the harness
               </p>
               <h3 className="mt-2 font-serif text-2xl text-ivory sm:text-3xl">
-                Benchmarks, not claims
+                Benchmark replays
               </h3>
             </div>
             <p className="max-w-md text-sm text-stone">
-              Pick a benchmark to replay the real measurements from triton-op-swap —
-              wins, honest losses, and all.
+              Pick a benchmark to replay the measurements behind triton-op-swap —
+              wins and losses included.
             </p>
           </div>
           <BenchmarkTerminal />

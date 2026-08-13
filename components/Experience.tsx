@@ -10,7 +10,7 @@ export default function Experience() {
             02 · Experience
           </p>
           <h2 className="font-serif text-4xl text-ivory sm:text-5xl">
-            The work that shipped
+            Where I&apos;ve worked
           </h2>
           <p className="mt-4 max-w-2xl text-stone sm:text-lg">
             Five years of production model optimization — from quantization tooling to a
