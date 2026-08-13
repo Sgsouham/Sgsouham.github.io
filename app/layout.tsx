@@ -26,7 +26,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: `${profile.name} — AI Engineering Lead`,
   description:
-    "AI Engineering Lead specializing in model optimization, on-device AI enablement, and team leadership. 5+ years shipping production ML — quantization tooling, custom Triton/CUDA kernels, and LLM post-training.",
+    "AI Engineering Lead specializing in model optimization, on-device AI enablement, and team leadership. 5+ years shipping production ML — quantization tooling, PyTorch-side model reengineering, and LLM post-training.",
   keywords: [
     "AI Engineering Lead",
     "Model Optimization",

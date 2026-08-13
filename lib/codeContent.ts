@@ -34,9 +34,10 @@ class SouhamGhosh(AIEngineeringLead):
     def specialize(self) -> list[str]:
         return [
             "quantization (PTQ/QAT, W8A8/W4A8)",
-            "custom Triton / CUDA kernels",
+            "PyTorch reengineering (graph rewrites, fusion)",
             "LLM post-training (SFT/DPO/GRPO)",
             "on-device NPU enablement",
+            "custom Triton / CUDA kernels",
         ]
 
     def lead(self) -> str:
@@ -50,11 +51,8 @@ class SouhamGhosh(AIEngineeringLead):
 skills = {
     "model_optimization": [
         "PTQ & QAT", "W8A8 / W4A8", "FP16 / INT8",
-        "knowledge distillation", "ONNX export constraints",
-    ],
-    "kernels_and_compilers": [
-        "OpenAI Triton", "CUDA C++", "TVM / MLIR",
-        "NCU / NSYS profiling", "roofline analysis",
+        "PyTorch graph rewrites", "operator fusion",
+        "custom PyTorch operators",
     ],
     "llm_post_training": [
         "SFT", "DPO", "GRPO", "verifiable rewards",
@@ -62,6 +60,10 @@ skills = {
     "leadership": [
         "technical roadmaps", "code-review standards",
         "mentoring", "cross-team delivery",
+    ],
+    "kernels": [
+        "OpenAI Triton", "NCU / NSYS profiling",
+        "roofline analysis",
     ],
 }
 

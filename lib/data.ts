@@ -23,7 +23,7 @@ export const heroTerminalLines = [
   "souham@lead:~$ whoami",
   "AI Engineering Lead · 5+ yrs shipping production ML",
   "souham@lead:~$ ls specialization/",
-  "quantization/ triton-kernels/ cuda/ llm-post-training/",
+  "quantization/ graph-rewrites/ llm-post-training/ on-device/",
   "souham@lead:~$ cat metrics.txt",
   "16× latency reduction · 20+ models enabled on-device",
 ];
@@ -36,9 +36,9 @@ export const metrics = [
 ];
 
 export const about = {
-  heading: "From kernels to teams.",
+  heading: "From model graphs to teams.",
   paragraphs: [
-    "AI engineering lead with 5+ years shipping production model optimization and on-device AI enablement for enterprise customers — quantization tooling (PTQ/QAT), custom Triton/CUDA kernels, and LLM post-training (SFT/DPO/GRPO) on constrained hardware.",
+    "AI engineering lead with 5+ years shipping production model optimization and on-device AI enablement for enterprise customers — quantization tooling (PTQ/QAT), PyTorch-side model reengineering (graph rewrites, operator fusion, custom PyTorch operators), and LLM post-training (SFT/DPO/GRPO) on constrained hardware.",
     "I currently lead a 10-person engineering team spanning development and delivery: owning technical roadmaps, code-review standards, mentoring and upskilling, and cross-team coordination with customer engineering organizations.",
     "Before anything ships, it is benchmarked and profiled on the target hardware, and the write-up reports the results as measured — including the places where a custom kernel loses to cuBLAS.",
   ],
@@ -168,7 +168,7 @@ export const projects: Project[] = [
     title: "Triton Fused Multi-Scale Deformable-Attention Kernel",
     tagline: "BEV deformable attention, from first principles",
     description:
-      "A block-tiled Triton kernel fusing bilinear sampling and level accumulation into a single launch, validated numerically against the PyTorch baseline (torch.allclose). Benchmarked from naive PyTorch (2.80 ms) to autotuned Triton (0.74 ms), profiled with NCU/NSYS and roofline analysis. The capstone for my BEV kernel engineering track.",
+      "A block-tiled Triton kernel fusing bilinear sampling and level accumulation into a single launch, validated numerically against the PyTorch baseline (torch.allclose). Benchmarked from naive PyTorch (2.80 ms) to autotuned Triton (0.74 ms), profiled with NCU/NSYS and roofline analysis. The capstone of my BEV kernel work.",
     status: "in-progress",
     domain: "Perception / Systems",
     stack: ["OpenAI Triton", "PyTorch", "profiling", "roofline"],
@@ -221,21 +221,12 @@ export const skillClusters: SkillCluster[] = [
       "PTQ & QAT",
       "W8A8 / W4A8",
       "FP16 / INT8 schedules",
+      "PyTorch graph rewrites",
+      "Operator fusion",
+      "Custom PyTorch operators",
       "Knowledge distillation",
       "ONNX export constraints",
       "Static vs dynamic ops",
-    ],
-  },
-  {
-    title: "Custom Kernels & Compilers",
-    icon: "▚",
-    skills: [
-      "OpenAI Triton",
-      "CUDA C++",
-      "TVM / MLIR lowering",
-      "NCU / NSYS profiling",
-      "Roofline analysis",
-      "Operator fusion",
     ],
   },
   {
@@ -262,22 +253,31 @@ export const skillClusters: SkillCluster[] = [
       "Stakeholder communication",
     ],
   },
+  {
+    title: "Custom Kernels",
+    icon: "▚",
+    skills: [
+      "OpenAI Triton",
+      "NCU / NSYS profiling",
+      "Roofline analysis",
+    ],
+  },
 ];
 
 export const languages = ["Python", "PyTorch", "TensorFlow", "C++", "Git / CI", "Vue.js", "Java"];
 
 export const marqueeKeywords = [
   "Quantization",
-  "Triton",
-  "GRPO",
-  "On-device AI",
-  "CUDA",
+  "PyTorch Graph Rewrites",
   "ONNX Export",
-  "DPO",
   "PTQ / QAT",
-  "BEV Perception",
-  "RL Post-training",
+  "On-device AI",
   "NPU Enablement",
+  "GRPO",
+  "DPO",
+  "RL Post-training",
+  "BEV Perception",
+  "Triton",
   "Roofline Analysis",
 ];
 

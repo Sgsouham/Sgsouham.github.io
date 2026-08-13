@@ -30,8 +30,8 @@ export default function Projects() {
           </p>
           <h2 className="font-serif text-4xl text-ivory sm:text-5xl">Selected projects</h2>
           <p className="mt-4 max-w-2xl text-stone sm:text-lg">
-            Projects that extend my professional work — kernel engineering,
-            LLM post-training, and on-device enablement.
+            Projects that extend my professional work — on-device enablement,
+            LLM post-training, and kernel engineering.
           </p>
         </Reveal>
 
